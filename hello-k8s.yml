@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-k8s
+  name: sessionapp
 spec:
   type: LoadBalancer
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: hello-k8s
+    app: sessionapp
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-k8s
+  name: sessionapp
 spec:
   replicas: 3
   strategy:
@@ -23,14 +23,14 @@ spec:
       maxSurge: 2
   selector:
     matchLabels:
-      app: hello-k8s
+      app: sessionapp
   template:
     metadata:
       labels:
-        app: hello-k8s
+        app: sessionapp
     spec:
       containers:
-        - name: hello-k8s
+        - name: sessionapp
           image: CONTAINER_IMAGE
           securityContext:
             privileged: false
