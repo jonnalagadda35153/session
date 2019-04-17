@@ -10,7 +10,10 @@ phases:
       - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
       - echo installing maven...
       - apt-get update -y
-      - apt-get install -y openjdk-8-jdk
+      - apt-get install software-properties-common
+      - add-apt-repository ppa:openjdk-r/ppa
+      - sudo apt-get update
+      - apt-get install openjdk-8-jre
       - apt-get install -y maven
   pre_build:
       commands:
