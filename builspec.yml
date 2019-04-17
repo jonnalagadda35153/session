@@ -16,11 +16,16 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
   build:
     commands:
-      - mvn clean package 
+      - echo Entering build phase...
+      - echo Build started on `date`
+      - mvn -f pom.xml compile
+      - mvn -f pom.xml package
       - docker build --tag $REPOSITORY_URI:$TAG .
 
   post_build:
     commands:
+      - echo Entering post_build phase...
+      - echo Build completed on `date`i
       - docker push $REPOSITORY_URI:$TAG
       - CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
       - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
@@ -31,4 +36,6 @@ phases:
       - kubectl apply -f sessionappdeploy.yml
       - printf '[{"name":"sessionapp","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
-  files: '**/*'
+  files:
+    - 'target/session-1.0-SNAPSHOT.war'
+    - '**/*'

@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-String message = null;
+String message = "Hello, User";
 String sessionID = null;
 
 Cookie[] cookies = request.getCookies();
@@ -21,6 +21,7 @@ for(Cookie cookie : cookies){
 }
 %>
 <h3>Login Success</h3>
+<h3>Welcome Jai</h3>
 <h4><%=message%></h4>
 <h4>Session ID = <%=sessionID %></h4>
 <br><br>

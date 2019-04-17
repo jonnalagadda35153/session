@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [17/Apr/2019:11:28:06 -0400] "GET /session HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [17/Apr/2019:11:28:06 -0400] "GET /session/ HTTP/1.1" 404 967 http-bio-8080-exec-3 19
+0:0:0:0:0:0:0:1 - - [17/Apr/2019:11:28:13 -0400] "POST /session/LoginServlet HTTP/1.1" 302 - http-bio-8080-exec-4 50
+0:0:0:0:0:0:0:1 - - [17/Apr/2019:11:28:14 -0400] "GET /session/admin/LoginSuccess.jsp HTTP/1.1" 200 448 http-bio-8080-exec-5 938
+0:0:0:0:0:0:0:1 - - [17/Apr/2019:11:28:46 -0400] "GET /session/admin/LoginSuccess.jsp HTTP/1.1" 200 469 http-bio-8080-exec-6 69
