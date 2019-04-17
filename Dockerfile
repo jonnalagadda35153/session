@@ -4,4 +4,4 @@ FROM tomcat:7.0
 MAINTAINER Jaswanth
 
 # COPY path-to-your-application-war path-to-webapps-in-docker-tomcat
-COPY session-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY target/session-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
