@@ -5,3 +5,5 @@ MAINTAINER Jaswanth
 
 # COPY path-to-your-application-war path-to-webapps-in-docker-tomcat
 COPY target/session-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+
+#RUN
