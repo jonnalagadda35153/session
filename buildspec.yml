@@ -9,7 +9,9 @@ phases:
       - export PATH=$PWD/:$PATH
       - apt-get update && apt-get -y install jq python3-pip python3-dev && pip3 install --upgrade awscli
       - echo installing maven...
-      - apt install maven
+      - apt-get update -y
+      - apt-get install -y openjdk-8-jdk
+      - apt-get install -y maven
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
@@ -20,9 +22,8 @@ phases:
     commands:
       - echo Entering build phase...
       - echo Build started on `date`
-      - mvn -f pom.xml compile
-      - mvn -f pom.xml package
-      - docker build --tag $REPOSITORY_URI:$TAG .
+      - mvn install
+      - docker image build --tag $REPOSITORY_URI:$TAG .
 
   post_build:
     commands:
