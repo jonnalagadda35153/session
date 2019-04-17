@@ -22,7 +22,7 @@ phases:
     commands:
       - echo Entering build phase...
       - echo Build started on `date`
-      - mvn install
+      - mvn clean package
       - docker image build --tag $REPOSITORY_URI:$TAG .
 
   post_build:
