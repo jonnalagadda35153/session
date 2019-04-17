@@ -31,4 +31,4 @@ phases:
       - kubectl apply -f sessionappdeploy.yml
       - printf '[{"name":"sessionapp","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
-  files: build.json
+  files: '**/*'
