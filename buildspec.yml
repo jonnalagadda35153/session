@@ -13,7 +13,7 @@ phases:
       - apt-get install software-properties-common
       - add-apt-repository ppa:openjdk-r/ppa
       - apt-get update
-      - apt-get install -y openjdk-8-jre
+      - apt-get install -y openjdk-8-jdk
       - apt-get install -y maven
   pre_build:
       commands:
